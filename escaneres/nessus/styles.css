@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background:cadetblue;
+      color: #e0e7ff;
+      min-height: 100vh;
+      /* Utiliza 'auto' en vez de 'hidden' para permitir el scroll si es necesario */
+      overflow-x: auto; 
+    }
+    
+    /* Usar unidades fluidas para el tamaño de fuente en el encabezado */
+    h1{
+      color:cadetblue;
+      text-align: left;
+      /* Ajuste de fuente para responsividad con clamp o em/rem */
+      font-size: clamp(1.2em, 2vw, 1.8em); 
+    }
+    h3{
+      color: red;
+    }
+
+    /* --- Banner de login fijo en la parte superior --- */
+    .login-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 14, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(100, 200, 255, 0.2);
+      /* Reduce el padding para pantallas pequeñas */
+      padding: 12px 20px; 
+      display: flex;
+      align-items: center;
+      /* Empieza alineado a la derecha, se ajustará en media query */
+      justify-content: flex-end; 
+      gap: 15px; /* Reduce el gap */
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .login-form {
+      display: flex;
+      align-items: center;
+      gap: 12px; /* Reduce el gap */
+      background: rgba(20, 25, 40, 0.6);
+      padding: 6px 16px; /* Reduce el padding */
+      border-radius: 50px;
+      border: 1px solid rgba(100, 200, 255, 0.3);
+      box-shadow: 0 0 20px rgba(100, 200, 255, 0.15);
+    }
+
+    .login-form input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #e0e7ff;
+      font-family: 'Orbitron', sans-serif;
+      /* Usa un tamaño de fuente más pequeño para dispositivos móviles */
+      font-size: 13px; 
+      padding: 8px 0; /* Reduce el padding */
+      /* Usa max-width para que el input sea fluido pero no muy largo */
+      width: 100%; 
+      max-width: 160px;
+    }
+    
+    /* ... (Estilos de placeholder y focus se mantienen) ... */
+
+    .login-form input::placeholder {
+      color: rgba(200, 220, 255, 0.6);
+      transition: color 0.3s;
+    }
+
+    .login-form input:focus::placeholder {
+      color: #64c8ff;
+    }
+
+    .login-form input:focus {
+      box-shadow: 0 0 15px rgba(100, 200, 255, 0.4);
+    }
+
+    .separator {
+      width: 1px;
+      height: 25px; /* Reduce la altura */
+      background: rgba(100, 200, 255, 0.4);
+    }
+
+    .btn-login {
+      background: linear-gradient(135deg, #64c8ff, #3264ff);
+      color: white;
+      border: none;
+      padding: 8px 20px; /* Reduce el padding */
+      border-radius: 50px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      font-size: 13px; /* Reduce el tamaño de fuente */
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(100, 200, 255, 0.4);
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(100, 200, 255, 0.6);
+      background: linear-gradient(135deg, #80d0ff, #4d79ff);
+    }
+
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
+    /* --- Contenido principal --- */
+    #contenido {
+      margin-top: 70px; /* Reduce el margen superior */
+      padding: 20px; /* Reduce el padding */
+      max-width: 1500px;
+      margin-left: auto; /* Centra el contenido si la pantalla es muy grande */
+      margin-right: auto;
+    }
+    
+    /* Efecto de brillo sutil al pasar el mouse por el formulario */
+    .login-form:hover {
+      box-shadow: 0 0 30px rgba(100, 200, 255, 0.3);
+    }
+    
+    /* Tabla Responsiva */
+    table{
+      width: 100%;
+      text-align: center;
+      /* Asegura que la tabla no se salga del contenedor */
+      table-layout: fixed; 
+      overflow-x: auto; 
+    }
+    
+    /* ---------------------------------------------------- */
+    /* --- Media Query para Tabletas (Máximo 1024px) --- */
+    /* ---------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .login-banner {
+        padding: 10px 15px; /* Más compacto */
+      }
+      
+      .login-form input {
+        max-width: 120px; /* Los inputs pueden ser más pequeños */
+      }
+      
+      /* Haz que la tabla sea horizontalmente deslizable si hay mucho contenido */
+      .table-container { 
+         overflow-x: auto;
+      }
+    }
+
+
+    /* ---------------------------------------------------- */
+    /* --- Media Query para Dispositivos Móviles (Máximo 768px) --- */
+    /* ---------------------------------------------------- */
+    @media (max-width: 768px) {
+      /* Ajusta el banner de login */
+      .login-banner {
+        /* Cambia a 'space-around' para centrar/distribuir mejor */
+        justify-content: space-around; 
+        gap: 10px;
+        /* El banner podría apilarse si es necesario, pero lo mantendremos en línea por ahora */
+      }
+      
+      .login-form {
+        /* Permite que el formulario ocupe más espacio */
+        flex-grow: 1; 
+        padding: 6px 10px;
+        gap: 8px;
+      }
+      
+      .login-form input {
+        font-size: 12px; /* Fuente más pequeña */
+        max-width: 100px; /* Reduce el tamaño máximo del input */
+      }
+      
+      .separator {
+        display: none; /* Oculta el separador para ahorrar espacio */
+      }
+      
+      .btn-login {
+        font-size: 12px;
+        padding: 6px 15px; /* Botón más pequeño */
+      }
+      
+      #contenido {
+        margin-top: 60px; /* Reduce el margen superior de nuevo */
+        padding: 15px;
+      }
+      
+      h1 {
+         /* Asegura que el título no sea demasiado grande */
+        font-size: 1.5em; 
+      }
+    }
